@@ -15,19 +15,19 @@ export const tpmsData = {
       name: "TPMS Edge Controller",
       category: "Main Controller",
       description: "Industrial-grade IoT gateway with RL78 Processor, 48V DC, GSM/4G/RS485.",
-      image: "/src/assets/images/tpms-device.png"
+      image: "/images/tpms-device.png"
     },
     {
       name: "Weatherproof Enclosure",
       category: "Protective Case",
       description: "Rugged IP-rated outdoor enclosure ensuring the safety of TPMS units in harsh climates.",
-      image: "/src/assets/images/tpms-outside.jpg"
+      image: "/images/tpms-outside.jpg"
     },
     {
       name: "Smoke & Fire Detector",
       category: "Safety Sensor",
       description: "Early warning photoelectric smoke detection system for instant fire alerts.",
-      image: "/src/assets/images/fire-smoke-sensor.jpg"
+      image: "/images/fire-smoke-sensor.jpg"
     }
   ],
   alarms: {

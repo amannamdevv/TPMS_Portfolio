@@ -44,7 +44,7 @@ const Sidebar = () => {
           <div className="p-6 border-b border-gray-100 bg-gradient-to-br from-primary-darker to-primary shadow-inner">
             <div className="flex items-center gap-3 text-white">
               <div className="bg-white p-2 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <img src="/src/assets/images/logo.png" alt="Shroti Telecom Logo" className="w-12 object-contain" />
+                <img src="/images/logo.png" alt="Shroti Telecom Logo" className="w-12 object-contain" />
               </div>
               <div>
                 <h1 className="font-bold text-xl leading-none tracking-wide text-white drop-shadow-md">TPMS</h1>

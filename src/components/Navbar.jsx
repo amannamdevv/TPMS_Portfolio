@@ -34,7 +34,7 @@ const Navbar = () => {
           <div className="flex items-center gap-3 flex-shrink-0">
             <div className="bg-white p-1 rounded-full shadow-sm border border-blue-50">
               <img 
-                src="/src/assets/images/logo.png" 
+                src="/images/logo.png" 
                 alt="Shroti Telecom Logo" 
                 className="h-12 w-12 object-contain rounded-full" 
               />

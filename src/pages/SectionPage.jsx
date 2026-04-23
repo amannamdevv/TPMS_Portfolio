@@ -129,7 +129,7 @@ const SectionPage = ({ section }) => {
               </div>
               <div className="flex-1 bg-white p-4 rounded-3xl border border-gray-100 shadow-xl">
                  <div className="bg-gray-50 rounded-2xl flex items-center justify-center p-4">
-                   <img src="/src/assets/images/architecture.png" alt="Architecture Visualization" className="w-full h-auto object-contain rounded-xl" />
+                   <img src="/images/architecture.png" alt="Architecture Visualization" className="w-full h-auto object-contain rounded-xl" />
                  </div>
               </div>
             </div>
@@ -152,7 +152,7 @@ const SectionPage = ({ section }) => {
         return (
           <div className="space-y-8">
             <div className="w-full h-64 md:h-96 rounded-3xl overflow-hidden shadow-lg relative mb-8">
-              <img src="/src/assets/images/telecom-tower.jpg" alt="Telecom Tower" className="w-full h-full object-cover" />
+              <img src="/images/telecom-tower.jpg" alt="Telecom Tower" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
                 <h3 className="text-3xl font-bold text-white">Protecting Critical Infrastructure Worldwide</h3>
               </div>
@@ -193,7 +193,7 @@ const SectionPage = ({ section }) => {
                 </div>
               </div>
               <div className="flex-1 w-full">
-                <img src="/src/assets/images/soc.png" alt="SOC Monitoring Room" className="w-full h-auto rounded-2xl shadow-xl border border-gray-100" />
+                <img src="/images/soc.png" alt="SOC Monitoring Room" className="w-full h-auto rounded-2xl shadow-xl border border-gray-100" />
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@ const SectionPage = ({ section }) => {
                 <p className="text-gray-600 leading-relaxed text-lg max-w-4xl mx-auto mb-10">
                   Address all major telecom site challenges—Battery Theft, Diesel Pilferage, Power Failures, and Inaccurate Billing—from a single pane of glass.
                 </p>
-                <img src="/src/assets/images/single_solution.png" alt="Unified Solution" className="w-full max-w-3xl mx-auto h-auto object-contain rounded-xl shadow-lg border border-gray-100" />
+                <img src="/images/single_solution.png" alt="Unified Solution" className="w-full max-w-3xl mx-auto h-auto object-contain rounded-xl shadow-lg border border-gray-100" />
              </div>
           </div>
         );

@@ -32,7 +32,7 @@ const Home = () => {
       {/* ═══════════════════ HERO SECTION ═══════════════════ */}
       <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-36 overflow-hidden">
         <div className="absolute inset-0 bg-slate-900">
-          <video autoPlay loop muted playsInline poster="/src/assets/images/telecom-tower.jpg" className="w-full h-full object-cover opacity-60">
+          <video autoPlay loop muted playsInline poster="/images/telecom-tower.jpg" className="w-full h-full object-cover opacity-60">
             <source src="/videos/video.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-transparent" />
@@ -106,7 +106,7 @@ const Home = () => {
           </div>
           <div className="flex-[1.2] relative mt-10 lg:mt-0 w-full">
             <div className="absolute -inset-6 bg-gradient-to-br from-blue-100 to-blue-50 rounded-[3rem] -z-10" />
-            <img src="/src/assets/images/web-dashboard.png" alt="TPMS Dashboard Preview" className="w-full h-auto mx-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-500" />
+            <img src="/images/web-dashboard.png" alt="TPMS Dashboard Preview" className="w-full h-auto mx-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-500" />
           </div>
         </div>
       </section>
@@ -116,7 +116,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-black text-gray-900 mb-4">One Device. Complete Protection.</h2>
           <p className="text-gray-600 text-lg mb-10 max-w-2xl mx-auto">Battery Theft, Diesel Pilferage, Power Failures & Inaccurate Billing — all solved by a single TPMS unit.</p>
-          <img src="/src/assets/images/single_solution.png" alt="Single Solution" className="w-full max-w-7xl mx-auto rounded-2xl shadow-xl hover:scale-[1.02] transition-transform duration-500" />
+          <img src="/images/single_solution.png" alt="Single Solution" className="w-full max-w-7xl mx-auto rounded-2xl shadow-xl hover:scale-[1.02] transition-transform duration-500" />
         </div>
       </section>
 
@@ -243,7 +243,7 @@ const Home = () => {
               <p className="text-gray-600 leading-relaxed">When an alarm is triggered, TPMS instantly activates the hooter, sends WhatsApp alerts, makes automated robo-calls, and escalates through L1 to L5 contacts until the issue is resolved.</p>
             </div>
             <div className="flex-1">
-              <img src="/src/assets/images/calling-system.png" alt="Calling System" className="w-full max-w-sm mx-auto rounded-xl" />
+              <img src="/images/calling-system.png" alt="Calling System" className="w-full max-w-sm mx-auto rounded-xl" />
             </div>
           </div>
         </div>
@@ -260,7 +260,7 @@ const Home = () => {
 
           {/* Architecture Diagram - User's new image */}
           <div className="bg-white rounded-3xl p-3 shadow-2xl mb-16 max-w-5xl mx-auto">
-            <img src="/src/assets/images/5_layer_architecture.png" alt="TPMS Architecture Diagram" className="w-full rounded-2xl" />
+            <img src="/images/5_layer_architecture.png" alt="TPMS Architecture Diagram" className="w-full rounded-2xl" />
           </div>
 
           {/* Layer Cards */}
@@ -294,7 +294,7 @@ const Home = () => {
               <div className="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center"><Zap size={24} /></div>
               <h3 className="text-2xl font-black text-gray-900">Energy Monitoring</h3>
             </div>
-            <img src="/src/assets/images/graphs.png" alt="Energy Graphs" className="w-full rounded-xl mb-8 border border-gray-100" />
+            <img src="/images/graphs.png" alt="Energy Graphs" className="w-full rounded-xl mb-8 border border-gray-100" />
             <ul className="space-y-3">
               {tpmsData.energy.map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-green-50/50">
@@ -311,7 +311,7 @@ const Home = () => {
               <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center"><Monitor size={24} /></div>
               <h3 className="text-2xl font-black text-gray-900">SOC Monitoring</h3>
             </div>
-            <img src="/src/assets/images/soc.png" alt="SOC Monitoring" className="w-full rounded-xl mb-8 border border-gray-100 object-cover h-64" />
+            <img src="/images/soc.png" alt="SOC Monitoring" className="w-full rounded-xl mb-8 border border-gray-100 object-cover h-64" />
             <ul className="space-y-3">
               {tpmsData.soc.map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-blue-50/50">
@@ -345,7 +345,7 @@ const Home = () => {
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
                 <div className="relative bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col">
                   <img
-                    src="/src/assets/images/web-dashboard.png"
+                    src="/images/web-dashboard.png"
                     alt="Web Dashboard"
                     className="w-full h-auto"
                   />
@@ -361,7 +361,7 @@ const Home = () => {
                 <div className="relative bg-black rounded-[2.5rem] p-2 shadow-2xl border-2 border-slate-700">
                   <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-b-2xl z-20"></div>
                   <img
-                    src="/src/assets/images/mobile-splash.jpeg"
+                    src="/images/mobile-splash.jpeg"
                     alt="Mobile App Splash"
                     className="w-full rounded-[2.2rem] aspect-[9/19] object-cover bg-slate-900"
                   />
@@ -374,7 +374,7 @@ const Home = () => {
                 <div className="relative bg-black rounded-[2.5rem] p-2 shadow-2xl border-2 border-slate-700">
                   <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-b-2xl z-20"></div>
                   <img
-                    src="/src/assets/images/mobile-dash.jpeg"
+                    src="/images/mobile-dash.jpeg"
                     alt="Mobile App Dashboard"
                     className="w-full rounded-[2.2rem] aspect-[9/19] object-cover bg-slate-900"
                   />
