@@ -15,7 +15,7 @@ export const tpmsData = {
       name: "TPMS Edge Controller",
       category: "Main Controller",
       description: "Industrial-grade IoT gateway with RL78 Processor, 48V DC, GSM/4G/RS485.",
-      image: "/images/tpms-device.png"
+      image: "./images/tpms-device.png"
     },
     {
       name: "Weatherproof Enclosure",
