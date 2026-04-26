@@ -33,10 +33,10 @@ const Navbar = () => {
           {/* Logo Section - Using Exact Uploaded Logo */}
           <div className="flex items-center gap-3 flex-shrink-0">
             <div className="bg-white p-1 rounded-full shadow-sm border border-blue-50">
-              <img 
-                src="/images/logo.png" 
-                alt="Shroti Telecom Logo" 
-                className="h-12 w-12 object-contain rounded-full" 
+              <img
+                src="./images/logo.png"
+                alt="Shroti Telecom Logo"
+                className="h-12 w-12 object-contain rounded-full"
               />
             </div>
             <div className="hidden sm:block">
@@ -48,8 +48,8 @@ const Navbar = () => {
           {/* Desktop Menu — big gap from logo */}
           <div className="hidden lg:flex items-center gap-6 ml-60">
             {navItems.map((item) => (
-              <a 
-                key={item.name} 
+              <a
+                key={item.name}
                 href={item.href}
                 className="text-sm font-semibold text-gray-600 hover:text-primary transition-colors whitespace-nowrap"
               >

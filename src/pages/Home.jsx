@@ -33,7 +33,7 @@ const Home = () => {
       <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-36 overflow-hidden">
         <div className="absolute inset-0 bg-slate-900">
           <video autoPlay loop muted playsInline poster="/images/telecom-tower.jpg" className="w-full h-full object-cover opacity-60">
-            <source src="/videos/video.mp4" type="video/mp4" />
+            <source src="./videos/video.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-transparent" />
         </div>
@@ -395,19 +395,19 @@ const Home = () => {
           <div className="relative overflow-hidden py-10">
             <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
             <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
-            
+
             <div className="animate-marquee flex gap-6 items-center">
               {[...tpmsData.clients, ...tpmsData.clients].map((client, idx) => {
                 const clientLogos = {
-                  "Airtel":            "/logos/airtel.png",
-                  "Vodafone":          "/logos/vodafone.png",
-                  "Tata Communication":"/logos/tata.png",
-                  "Indus Towers":      "/logos/indus.png",
-                  "Husk Power":        "/logos/husk_power.png",
-                  "Tower Vision":      "/logos/tower_vision.png",
-                  "Unity Digital":     "/logos/unity_digital.png",
-                  "Cloud Extel":       "/logos/cloud_extel.png",
-                  "Crest Digitel":     "/logos/crest_digitel.png",
+                  "Airtel": "/logos/airtel.png",
+                  "Vodafone": "/logos/vodafone.png",
+                  "Tata Communication": "/logos/tata.png",
+                  "Indus Towers": "/logos/indus.png",
+                  "Husk Power": "/logos/husk_power.png",
+                  "Tower Vision": "/logos/tower_vision.png",
+                  "Unity Digital": "/logos/unity_digital.png",
+                  "Cloud Extel": "/logos/cloud_extel.png",
+                  "Crest Digitel": "/logos/crest_digitel.png",
                   "Genius Tele Infra": "/logos/genius_tele.png",
                 };
 
