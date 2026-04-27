@@ -1,14 +1,17 @@
-import React from 'react';
-import Navbar from './components/Navbar';
+import React, { useState } from 'react';
+import PromoVideo from './components/PromoVideo';
 import Home from './pages/Home';
 
 function App() {
+  const [showVideo, setShowVideo] = useState(false);
+
   return (
     <div className="relative scroll-smooth">
-      <Navbar />
       <main>
-        <Home />
+        <Home onWatchVideo={() => setShowVideo(true)} />
       </main>
+
+      {showVideo && <PromoVideo onClose={() => setShowVideo(false)} />}
     </div>
   );
 }

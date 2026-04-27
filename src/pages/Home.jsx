@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { tpmsData } from '../data/tpmsData';
 import {
   ShieldAlert, Activity, Zap, Settings, MessageCircle, Mic, HeartPulse,
   Radio, Cpu, Wifi, Cloud, Monitor, Server, WifiOff, AlertTriangle, Battery, ShieldCheck,
-  Phone, Mail, MapPin, ExternalLink, ChevronRight, CheckCircle2, Download
+  Phone, Mail, MapPin, ExternalLink, ChevronRight, CheckCircle2, Download, Play
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import CountUp from '../components/CountUp';
 
 const icons = {
@@ -18,24 +19,40 @@ const icons = {
 const featureDescriptions = {
   "Theft Detection": "Battery, solar panel & equipment theft detection with instant hooter activation.",
   "Real-Time Monitoring": "Live status of all connected sites with second-by-second data refresh.",
-  "Energy Monitoring": "Track EB/DG/Battery run hours, KWH consumption & diesel levels.",
-  "Automation": "Auto DG start/stop, load transfer & intelligent power switching.",
   "WhatsApp Alerts": "Instant alarm notifications on WhatsApp with site details & images.",
   "Voice Alerts": "Automated robo-call alerts to escalation contacts for critical alarms.",
   "Self Health Monitoring": "TPMS device continuously monitors its own health & reports anomalies."
 };
 
-const Home = () => {
+const Home = ({ onWatchVideo }) => {
+  const [expandedSection, setExpandedSection] = useState(null);
+
+  const toggleSection = (id) => {
+    setExpandedSection(expandedSection === id ? null : id);
+  };
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-slate-50 min-h-screen selection:bg-blue-100 selection:text-blue-900">
+      {/* Subtle background pattern */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]" 
+           style={{ backgroundImage: `radial-gradient(#1e3a8a 0.5px, transparent 0.5px)`, backgroundSize: '24px 24px' }}></div>
+
+
 
       {/* ═══════════════════ HERO SECTION ═══════════════════ */}
-      <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-36 overflow-hidden">
+      <section id="home" className="relative pt-20 pb-20 lg:pt-32 lg:pb-36 overflow-hidden">
         <div className="absolute inset-0 bg-slate-900">
           <video autoPlay loop muted playsInline poster="/images/telecom-tower.jpg" className="w-full h-full object-cover opacity-60">
             <source src="./videos/video.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-transparent" />
+          {/* Logo overlay on Hero Video */}
+          <div className="absolute top-8 left-8 z-20">
+            <img 
+              src="/images/logo_new.png" 
+              alt="STPL Logo" 
+              className="h-20 w-auto object-contain opacity-100"
+            />
+          </div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="max-w-3xl">
@@ -50,14 +67,20 @@ const Home = () => {
               Smart IoT-based Security & Monitoring Platform for Telecom Infrastructure
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <a href="#about" className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-xl shadow-blue-500/30">
-                Explore Solution <ChevronRight size={20} />
-              </a>
-              <a href="/TPMS_Datasheet.pdf" download="TPMS_Datasheet_ShrotiTelecom.pdf" className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-xl">
+              <button 
+                onClick={onWatchVideo}
+                className="inline-flex items-center justify-center gap-3 bg-white text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-xl group"
+              >
+                <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <Play size={20} fill="currentColor" />
+                </div>
+                Watch Promo Video
+              </button>
+              <a href="/TPMS_Datasheet.pdf" download="TPMS_Datasheet_ShrotiTelecom.pdf" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold py-4 px-8 rounded-xl transition-all border border-white/20 shadow-xl">
                 <Download size={20} /> Download Datasheet
               </a>
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold py-4 px-8 rounded-xl transition-all border border-white/20">
-                Contact Us
+              <a href="#about" className="inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white/5 text-white font-bold py-4 px-8 rounded-xl transition-all">
+                Explore Solution <ChevronRight size={20} />
               </a>
             </div>
           </div>
@@ -86,102 +109,53 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ═══════════════════ ABOUT / TPMS SOLUTION ═══════════════════ */}
-      <section id="about" className="py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="flex-1 space-y-6">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-primary font-bold text-sm tracking-wider uppercase">About TPMS</div>
-            <h2 className="text-4xl lg:text-5xl font-black text-gray-900 leading-tight">Industrial-Grade<br />Edge Device</h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Built for the harshest environments, our TPMS hardware acts as an intelligent controller that monitors, detects, and acts autonomously even during total power loss or communication failure. Deployed extensively across the Apec Reason with over 2000+ critical installations.
-            </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {tpmsData.hardware.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 bg-white p-4 rounded-xl border border-gray-100 shadow-sm hover:border-primary/30 transition-colors">
-                  <CheckCircle2 size={18} className="text-primary shrink-0" />
-                  <span className="font-semibold text-gray-800">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex-[1.2] relative mt-10 lg:mt-0 w-full">
-            <div className="absolute -inset-6 bg-gradient-to-br from-blue-100 to-blue-50 rounded-[3rem] -z-10" />
-            <img src="/images/web-dashboard.png" alt="TPMS Dashboard Preview" className="w-full h-auto mx-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-500" />
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════ SINGLE SOLUTION BANNER ═══════════════════ */}
-      <section className="py-16 bg-white border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-black text-gray-900 mb-4">One Device. Complete Protection.</h2>
-          <p className="text-gray-600 text-lg mb-10 max-w-2xl mx-auto">Battery Theft, Diesel Pilferage, Power Failures & Inaccurate Billing — all solved by a single TPMS unit.</p>
-          <img src="/images/single_solution.png" alt="Single Solution" className="w-full max-w-7xl mx-auto rounded-2xl shadow-xl hover:scale-[1.02] transition-transform duration-500" />
-        </div>
-      </section>
-
-      {/* ═══════════════════ VIDEO DEMONSTRATION ═══════════════════ */}
-      <section id="demo" className="py-24 bg-slate-50 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-primary font-bold text-sm tracking-wider uppercase mb-4">Product Demo</div>
-          <h2 className="text-4xl font-black text-gray-900 mb-6">See TPMS in Action</h2>
-          <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">Watch a comprehensive overview of how our Theft Prevention Management System secures telecom infrastructure.</p>
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200 bg-black">
-            <video controls className="w-full h-auto aspect-video object-cover">
-              <source src="/videos/tpms.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════ PRODUCTS SECTION (Teltonika Style) ═══════════════════ */}
-      <section id="products" className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-primary font-bold text-sm tracking-wider uppercase mb-4">Hardware</div>
-            <h2 className="text-4xl font-black text-[#1e3a5f] mb-6">TPMS Products</h2>
-            <p className="text-lg text-gray-600">Industrial-grade sensors and controllers built for remote telecom sites.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {tpmsData.products?.map((prod, idx) => (
-              <div key={idx} className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-2xl hover:border-primary/30 transition-all duration-300 group flex flex-col">
-                <div className="h-48 overflow-hidden bg-white p-4 relative flex items-center justify-center border-b border-gray-50">
-                  <img src={prod.image} alt={prod.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute top-3 left-3 bg-[#1b2533] text-white px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider">{prod.category}</div>
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-lg font-bold text-[#1e3a5f] mb-2">{prod.name}</h3>
-                  <p className="text-sm text-gray-500 flex-1">{prod.description}</p>
-                  <div className="mt-4 pt-4 border-t border-gray-50">
-                    <span className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">Details <ChevronRight size={16} /></span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════ FEATURES SECTION ═══════════════════ */}
-      <section id="features" className="py-28 bg-white border-y border-gray-100">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-primary font-bold text-sm tracking-wider uppercase mb-4">Capabilities</div>
-          <h2 className="text-4xl font-black text-gray-900 mb-6">Core Features</h2>
-          <p className="text-lg text-gray-600">Advanced capabilities engineered for seamless telecom operations.</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {tpmsData.features.map((feat, idx) => (
-            <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-blue-50 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                {icons[feat.icon] || <ShieldCheck size={28} />}
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">{feat.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{featureDescriptions[feat.title] || ''}</p>
+      {/* ═══════════════════ SECTION 1: THEFT PREVENTION MANAGEMENT SYSTEM ═══════════════════ */}
+      <section className="py-20 bg-white/80 backdrop-blur-sm relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            <div className="flex-1 space-y-6">
+              <h2 className="text-3xl md:text-4xl font-serif text-blue-900 leading-tight">
+                Theft Prevention Management System
+              </h2>
+              <p className="text-base text-gray-700 leading-relaxed text-justify">
+                {tpmsData.aboutShroti}
+              </p>
             </div>
-          ))}
+            <div className="flex-1">
+              <img 
+                src="/images/tpms_img.png" 
+                alt="TPMS Official Product Label" 
+                className="w-full h-auto shadow-lg"
+              />
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* ═══════════════════ SECTION 2: ADVANCED SECURITY SOLUTION ═══════════════════ */}
+      <section className="py-20 bg-gradient-to-b from-white/80 to-blue-50/50 backdrop-blur-sm relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            <div className="flex-1 order-2 lg:order-1">
+              <img 
+                src="/images/tpms_securty_details.png" 
+                alt="TPMS Security Details" 
+                className="w-full h-auto rounded-xl shadow-xl"
+              />
+            </div>
+            <div className="flex-1 order-1 lg:order-2 space-y-6">
+              <p className="text-base text-gray-700 leading-relaxed text-justify">
+                {tpmsData.detailedIntro}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
 
       {/* ═══════════════════ ALARM SYSTEM ═══════════════════ */}
       <section id="alarms" className="py-28 bg-gray-50 border-y border-gray-100">
@@ -279,50 +253,84 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ═══════════════════ ENERGY MONITORING ═══════════════════ */}
-      <section id="energy" className="py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════════════ SOC MONITORING ═══════════════════ */}
+      <section id="soc" className="py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-green-100 text-green-700 font-bold text-sm tracking-wider uppercase mb-4">Analytics</div>
-          <h2 className="text-4xl font-black text-gray-900 mb-6">Energy & SOC Monitoring</h2>
-          <p className="text-lg text-gray-600">Real-time energy analytics and 24x7 security operations center for uninterrupted site management.</p>
+          <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-600 font-bold text-sm tracking-wider uppercase mb-4">Security</div>
+          <h2 className="text-4xl font-black text-gray-900 mb-6">SOC Monitoring</h2>
+          <p className="text-lg text-gray-600">24x7 security operations center for uninterrupted site management and rapid response.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Energy */}
-          <div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-shadow">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center"><Zap size={24} /></div>
-              <h3 className="text-2xl font-black text-gray-900">Energy Monitoring</h3>
-            </div>
-            <img src="/images/graphs.png" alt="Energy Graphs" className="w-full rounded-xl mb-8 border border-gray-100" />
-            <ul className="space-y-3">
-              {tpmsData.energy.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-green-50/50">
-                  <CheckCircle2 size={18} className="text-green-600 shrink-0" />
-                  <span className="font-semibold text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-shadow max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center"><Monitor size={24} /></div>
+            <h3 className="text-2xl font-black text-gray-900">SOC Monitoring</h3>
           </div>
-
-          {/* SOC */}
-          <div id="soc" className="bg-white p-10 rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-shadow">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center"><Monitor size={24} /></div>
-              <h3 className="text-2xl font-black text-gray-900">SOC Monitoring</h3>
-            </div>
-            <img src="/images/soc.png" alt="SOC Monitoring" className="w-full rounded-xl mb-8 border border-gray-100 object-cover h-64" />
-            <ul className="space-y-3">
-              {tpmsData.soc.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-blue-50/50">
-                  <CheckCircle2 size={18} className="text-blue-600 shrink-0" />
-                  <span className="font-semibold text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <img src="/images/soc.png" alt="SOC Monitoring" className="w-full rounded-xl mb-8 border border-gray-100 object-cover h-[400px]" />
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {tpmsData.soc.map((item, idx) => (
+              <li key={idx} className="flex items-center gap-3 p-4 rounded-xl bg-blue-50/50 border border-blue-50 group hover:bg-blue-600 hover:text-white transition-all duration-300">
+                <CheckCircle2 size={18} className="text-blue-600 group-hover:text-white shrink-0" />
+                <span className="font-semibold text-gray-700 group-hover:text-white">{item}</span>
+              </li>
+            ))}
+            <li className="flex items-center gap-3 p-4 rounded-xl bg-green-50/50 border border-green-50 md:col-span-2">
+              <MessageCircle size={18} className="text-green-600 shrink-0" />
+              <span className="font-bold text-green-800">Dedicated WhatsApp Alert Group for SOC Team</span>
+            </li>
+          </ul>
         </div>
       </section>
+ 
+       {/* ═══════════════════ REAL-TIME WHATSAPP ALERTS ═══════════════════ */}
+       <section className="py-24 bg-white relative overflow-hidden">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+             <div className="order-2 lg:order-1 relative">
+               <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl blur opacity-20"></div>
+               <img 
+                 src="/images/tpms_whatsapp_notification.png" 
+                 alt="WhatsApp Alarm Notification" 
+                 className="relative w-full rounded-2xl shadow-2xl border border-gray-100" 
+               />
+               <div className="absolute bottom-6 right-6 bg-green-500 text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 shadow-2xl animate-bounce">
+                 <MessageCircle size={20} /> Live Notification
+               </div>
+             </div>
+             <div className="order-1 lg:order-2 space-y-8">
+               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-100 text-green-700 font-bold text-sm tracking-wider uppercase">
+                 Instant Communication
+               </div>
+               <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight">
+                 WhatsApp & Voice Alert System
+               </h2>
+               <p className="text-xl text-gray-600 leading-relaxed">
+                 When a critical alarm is triggered, TPMS doesn't just record it—it ensures the right person is notified instantly. We deliver detailed **WhatsApp alerts** directly to your SOC team and field technicians.
+               </p>
+               <div className="grid grid-cols-1 gap-6">
+                 <div className="flex items-start gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                   <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+                     <CheckCircle2 size={24} />
+                   </div>
+                   <div>
+                     <h4 className="text-lg font-bold text-gray-900">Comprehensive Alarm Details</h4>
+                     <p className="text-gray-600">Site ID (e.g., PANIHAR), alarm type, and technician contact info are all included in one message.</p>
+                   </div>
+                 </div>
+                 <div className="flex items-start gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                   <div className="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center shrink-0">
+                     <Phone size={24} />
+                   </div>
+                   <div>
+                     <h4 className="text-lg font-bold text-gray-900">Auto-Escalation Calls</h4>
+                     <p className="text-gray-600">Automated robo-calls to L1-L5 escalation contacts ensure no critical alarm goes unaddressed.</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
 
       {/* ═══════════════════ DIGITAL ECOSYSTEM (WEB & MOBILE) ═══════════════════ */}
       <section id="digital-platforms" className="py-28 bg-slate-900 relative overflow-hidden">
@@ -382,6 +390,112 @@ const Home = () => {
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════ SECTION 3: FEATURES AND BENEFITS (Interactive) ═══════════════════ */}
+      <section className="py-20 bg-white/90 backdrop-blur-md border-y border-blue-100/50 relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <button 
+            onClick={() => toggleSection('features')}
+            className="w-full flex items-center justify-between group py-4 border-b-2 border-transparent hover:border-blue-600 transition-all"
+          >
+            <h2 className="text-3xl md:text-4xl font-serif text-blue-900">
+              Features and Benefits
+            </h2>
+            <div className={`transform transition-transform duration-300 ${expandedSection === 'features' ? 'rotate-180' : ''}`}>
+              <ChevronRight size={32} className="text-blue-600" />
+            </div>
+          </button>
+          
+          <motion.div 
+            initial={false}
+            animate={{ height: expandedSection === 'features' ? 'auto' : 0, opacity: expandedSection === 'features' ? 1 : 0 }}
+            className="overflow-hidden"
+          >
+            <div className="pt-12 space-y-12">
+              {tpmsData.detailedFeatures.map((feat, idx) => (
+                <div key={idx} className="space-y-2">
+                  <h3 className="text-xl font-bold text-blue-800 flex items-center gap-2">
+                    <CheckCircle2 size={20} className="text-blue-600" />
+                    {feat.title}
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed pl-7">
+                    {feat.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+          
+          {expandedSection !== 'features' && (
+            <p className="mt-4 text-sm text-blue-600 font-bold animate-pulse cursor-pointer" onClick={() => toggleSection('features')}>
+              Click to view all features & benefits...
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* ═══════════════════ SECTION 4: WHY CHOOSE TPMS? (Interactive) ═══════════════════ */}
+      <section className="py-20 bg-gradient-to-b from-white/90 to-blue-50/30 backdrop-blur-md border-b border-blue-100/50 relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <button 
+            onClick={() => toggleSection('why-choose')}
+            className="w-full flex items-center justify-between group py-4 border-b-2 border-transparent hover:border-blue-600 transition-all"
+          >
+            <h2 className="text-3xl md:text-4xl font-serif text-blue-900">
+              Why Choose TPMS?
+            </h2>
+            <div className={`transform transition-transform duration-300 ${expandedSection === 'why-choose' ? 'rotate-180' : ''}`}>
+              <ChevronRight size={32} className="text-blue-600" />
+            </div>
+          </button>
+
+          <motion.div 
+            initial={false}
+            animate={{ height: expandedSection === 'why-choose' ? 'auto' : 0, opacity: expandedSection === 'why-choose' ? 1 : 0 }}
+            className="overflow-hidden"
+          >
+            <div className="pt-12 space-y-12">
+              {tpmsData.whyChooseTPMS.map((item, idx) => (
+                <div key={idx} className="space-y-2">
+                  <h3 className="text-xl font-bold text-blue-800 flex items-center gap-2">
+                    <CheckCircle2 size={20} className="text-blue-600" />
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed pl-7">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {expandedSection !== 'why-choose' && (
+            <p className="mt-4 text-sm text-blue-600 font-bold animate-pulse cursor-pointer" onClick={() => toggleSection('why-choose')}>
+              Click to learn more about why TPMS is the best choice...
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* ═══════════════════ SECTION 5: GET STARTED WITH TPMS TODAY ═══════════════════ */}
+      <section className="py-24 bg-white/90 backdrop-blur-sm relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-8">
+            Get Started with TPMS Today
+          </h2>
+          <p className="text-lg text-gray-700 leading-relaxed italic border-l-4 border-blue-600 pl-8 text-left py-4 bg-gray-50 rounded-r-xl">
+            {tpmsData.getStartedQuote}
+          </p>
+          <div className="mt-12">
+            <button 
+              onClick={onWatchVideo}
+              className="bg-blue-600 text-white font-bold py-4 px-10 rounded-xl hover:bg-blue-700 transition-colors shadow-lg"
+            >
+              Watch Video Presentation
+            </button>
           </div>
         </div>
       </section>
